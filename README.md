@@ -6,7 +6,15 @@ You must have the most up-to-date Mac OS, and must have the most up-to-date XCod
 
 ## How To Run
 
-1. Run the following command to build the iOS application.
+1. Point the path to the local node_modules folder
+
+```bash
+export PATH="./node_modules/.bin:$PATH"
+```
+
+2. Run the following command to build the iOS application.
+
+
 
 ```bash
 react-native run-ios
