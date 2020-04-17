@@ -7,38 +7,6 @@ import moment from "moment";
 export default class TripCard extends Component {
     constructor(props) {
         super(props);
-        this.processCart.bind(this);
-    }
-    processCart(cart) {
-        if (cart !== null) {
-            // We have data!!
-            //const cart = JSON.parse(acart);
-            // console.log(cart);
-            var flights = [];
-            var events = [];
-            var hotels = [];
-            var food = [];
-            cart.forEach(element => {
-              if (element.category == "food") {
-                food.push(element);
-              }
-              if (element.category == "hotel") {
-                hotels.push(element);
-              }
-              if (element.category == "flight") {
-                flights.push(element);
-              }
-              if (element.category == "event") {
-                events.push(element);
-              }
-            });
-            var retVal = [ flights, events, food, hotels ];
-            // console.log(retVal);
-            return retVal;
-          } else {
-              console.log("NULLL");
-              return null;
-          }
     }
     render () {
         console.log(this.props);
@@ -48,16 +16,7 @@ export default class TripCard extends Component {
         // trip = trip.replace("\"", "");
         let {flights, price } = JSON.parse("{" + trip +"}");
         console.log(flights);
-        // let details = this.processCart(cart);
 
-        // var flight_arr = []
-        // for (var flight in flights) {
-        //     flight_arr.push();
-        // }
-        // console.log(flight_arr);
-        //let { destination, startDate, endDate, events, food, hotels, flights, numDays, totalCost } = trip;
-        // let eventNum = details[1].length;
-        // let foodNum = details[2].length;
         return (
             <View style={{}}>
                 <TouchableHighlight style={{borderRadius: 15}}

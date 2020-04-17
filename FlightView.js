@@ -12,7 +12,6 @@ class FlightView extends Component {
     super(props);
     this.state = {
         isLoading: true,
-        currentCart: null,
         error: false,
         refreshing: false,
         time: 30,
@@ -48,58 +47,7 @@ class FlightView extends Component {
             })
         });
     }
-    // componentDidMount() {
-    //     this.getCurrentCart();
-    // }
 
-    // async getCurrentCart() {
-    //   try {
-    //     const value = await AsyncStorage.getItem('currentCart');
-    //     if (value !== null) {
-    //       // We have data!!
-    //       const cart = JSON.parse(value);
-    //       await this.setState({ currentCart: cart });
-    //       console.log(cart);
-    //     }
-    //   } catch (error) {
-    //     // Error retrieving data
-    //   }
-    // }
-
-  // async addToCart(flightObj) {
-  //   await this.getCurrentCart();
-  //   console.log(flightObj);
-  //   if (this.state.currentCart) {
-  //     var currentCart = this.state.currentCart;
-  //     console.log(currentCart);
-  //     var found = false;
-  //     currentCart.forEach(element => {
-  //       if (element.id == flightObj.id) {
-  //         found = true;
-  //       }
-  //     });
-  //     if (!found) {
-  //       currentCart.push(flightObj);
-  //       await this.setState({ currentCart: currentCart });
-  //     }
-  //   } else {
-  //     const currentCart = [flightObj];
-  //     console.log(currentCart);
-  //     await this.setState({ currentCart: currentCart });
-  //   }
-  //   await this.saveCartLocally();
-  // }
-
-  // async saveCartLocally() {
-  //   try {
-  //     console.log(this.state.currentCart);
-  //     await AsyncStorage.setItem('currentCart', JSON.stringify(this.state.currentCart));
-  //     await this.getCurrentCart();
-  //   } catch (error) {
-  //     // Error saving data
-  //     console.error(error);
-  //   }
-  // }
 
   render() {
     if (this.state.error) {
@@ -155,20 +103,6 @@ class FlightView extends Component {
               </FlightCard> 
             </View>
             
-            // <View style={{ margin: 15, borderBottomColor: "#000", borderBottomWidth: 2 }}>
-            //   <Text style={styles.centerTitle}>{provider}</Text>
-            //   <Text style={styles.miniHeader}>Price: <Text style={styles.regularText}>{price}</Text></Text>
-            //   <Text style={styles.miniHeader}>Depart Date: <Text style={styles.regularText}>{departDate}</Text></Text>
-            //   <Text style={styles.miniHeader}>Number of Stops: <Text style={styles.regularText}>{segments.length}</Text></Text>
-            //   <Text style={styles.link} onPress={() => { Linking.openURL(`tel:${bookingUrl}`); }}>Book Now!</Text>
-            //   <View style={{ margin: 15, flex: 1, justifyContent: "center", alignSelf: "center" }}>
-            //     <TouchableOpacity onPress={() => {
-            //       this.addToCart({category: "flight", tripId, departDate, price, provider, segments, bookingUrl});
-            //     }}>
-            //       <FontAwesomeIcon size={35} name={"cart-plus"} color={"#000"}/>
-            //     </TouchableOpacity>
-            //   </View>
-            // </View>
           );
         }}
         refreshing={this.state.refreshing}

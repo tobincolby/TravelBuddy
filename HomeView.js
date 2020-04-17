@@ -3,10 +3,7 @@ import { Platform, Button, View, ScrollView, Text, StyleSheet, FlatList, TextInp
 import { cDarkBlue, cLightBlue, cBlack, cWhite } from "./App";
 import StandardButton from "./StandardButton"
 import NewTripButton from './NewTripButton';
-import HotelCard from "./HotelCard";
-import RestaurantCard from "./RestaurantCard";
-import EventCard from "./EventCard";
-import FlightCard from "./FlightCard";
+
 import TripCard from "./TripCard";
 //import NewTripButton from './NewTripButton';
 
@@ -17,20 +14,8 @@ export default class HomeView extends React.Component {
 		console.log(this.params);
 		global.email = this.params.email;
 		this.props.navigation.addListener('didFocus', () => this.fetchTrips())
-		//this.getSample();
 	}
-	// TODO: REPLACE WITH DATA FROM DATABASE
-	/*
-	async getSample() {
-		var sample = await AsyncStorage.getItem('itinerary');
-		if (sample !== null) {
-			var sampleTrips = [JSON.parse(sample)];
-			this.setState({sample: sampleTrips});
-		} else { 
-			this.setState({sample : []})
-		}
-	
-	}*/
+
 
 	async fetchTrips() {
 		var url = global.url + "trips/?email=" + this.params.email;
@@ -57,9 +42,7 @@ export default class HomeView extends React.Component {
 
 	}
 
-	// componentDidMount() {
-	// 	this.fetchTrips();
-	// }
+
 
   	render() {
 			var initials = "";
@@ -71,11 +54,6 @@ export default class HomeView extends React.Component {
 			}
 			//global.email = this.params.email;
 			console.log()
-			
-			// let sampleTrips = [{ destination: "Seattle", startDate: "March 3", endDate: "March 6", 
-			// 		events: [], food: [], hotels: [], flights: [], numDays: 3, totalCost: 290 },
-			// 		{ destination: "Seattle", startDate: "March 3", endDate: "March 6", 
-			// 		events: [], food: [], hotels: [], flights: [], numDays: 3, totalCost: 290 }];
 			
 			return (
 				<ScrollView>

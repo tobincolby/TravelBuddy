@@ -2,8 +2,6 @@ import React from "react";
 import { Button, View, Platform, Text, StyleSheet, KeyboardAvoidingView, TextInput, AsyncStorage, Image } from "react-native";
 import { createStackNavigator, createAppContainer, NavigationActions, withNavigation } from "react-navigation";
 import TabViewPageHomeScreen from "./TabViewPage";
-import CartButton from "./CartButton";
-import CartScreen from "./CartScreen";
 import HomeView from "./HomeView";
 import TripOptionsScreen from './TripOptionsScreen';
 import ItineraryScreen from './ItineraryScreen';
@@ -51,7 +49,6 @@ class WelcomeScreen extends React.Component {
   }
 
   componentDidMount() {
-    AsyncStorage.removeItem('currentCart');
   }
 }
 
@@ -90,13 +87,10 @@ class LoginScreen extends React.Component {
   };
   
   componentDidMount() {
-    AsyncStorage.removeItem('currentCart');
   }
 
   login() {
-    // this.props.navigation.navigate('HomePage');
-    // //TODO: remove after UI improvements
-    //return null;
+
     try {
       console.log(this.state.email)
       console.log(this.state.pass)
@@ -115,11 +109,7 @@ class LoginScreen extends React.Component {
       .then((response) => response.json())
       .then((responseJSON) => {
         if (responseJSON['success'] == 1) {
-          // try {
-          //   AsyncStorage.setItem('currentUserUid', responseJSON['uid']);
-          // } catch (error) {
-          //   console.log(error);
-          // }
+
           var userName = responseJSON['name'];
           var email = responseJSON['email'];
           console.log(responseJSON);
@@ -303,7 +293,6 @@ const AppNavigator = createStackNavigator({
   TripPage: {
     screen: TabViewPageHomeScreen,
     navigationOptions: {
-      // headerRight: (<CartButton />),
       headerStyle: {
         backgroundColor: cLightBlue,
         elevation: 0,
@@ -315,22 +304,6 @@ const AppNavigator = createStackNavigator({
       },
       headerTintColor: 'white',
       
-    },
-  },
-  Cart: {
-    screen: CartScreen,
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: cLightBlue,
-        elevation: 0,
-        shadowOpacity: 0,
-        paddingTop: 15,
-        headerTintColor: "#FFFFFF"
-      },
-      headerLeftContainerStyle: {
-        marginLeft: 0,
-      },
-      headerTintColor: 'white',
     },
   },
   Itinerary: {

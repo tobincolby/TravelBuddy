@@ -82,7 +82,6 @@ export default class TripOptionsScreen extends React.Component {
 	}
 
   	render() {
-			AsyncStorage.removeItem('currentCart');
 			const { selectedStartDate, selectedEndDate, originCity, dest1City} = this.state;
 			console.log(this.state);
 			const minDate = new Date(); // Today

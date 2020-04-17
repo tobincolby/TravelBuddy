@@ -3,14 +3,9 @@ import { View, NavigationActions, Platform, Text, FlatList, Image, StyleSheet, L
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome5";
 import StarRating from 'react-native-star-rating';
 import FlightCard from "./FlightCard.js";
-import HotelCard from "./HotelCard.js";
-import EventCard from "./EventCard.js";
 import RestaurantView from "./RestaurantView.js";
-import ItineraryFlightElement from "./ItineraryFlightElement.js";
-import ItineraryHotelElement from "./ItineraryHotelElement.js";
-import ItineraryFoodElement from "./ItineraryFoodElement.js";
+
 import SmallElement from "./SmalllElement.js";
-import ItineraryEventElement from "./ItineraryEventElement.js";
 import SaveButton from "./SaveButton";
 import moment from "moment";
 import { TabView, TabBar, SceneMap, Label } from 'react-native-tab-view';
@@ -33,8 +28,6 @@ class ItineraryScreen extends Component {
       index: 0,
       routes: [
         { key: 'first', title: 'Flights' },
-        // { key: 'second', title: 'Hotels' },
-        // { key: 'third', title: 'Events' },
         { key: 'second', title: 'Food'},
       ],
     };
@@ -113,8 +106,6 @@ TabFlightView = () => {
         navigationState={this.state}
         renderScene={SceneMap({
           first: this.TabFlightView,
-          // second: this.HotelTabView,
-          // third: this.EventTabView,
           second: this.FoodTabView,
         })}
         onIndexChange={index => this.setState({ index })}

@@ -2,18 +2,13 @@ import * as React from 'react';
 import { View, Platform, StyleSheet, Dimensions, Text } from 'react-native';
 import { TabView, TabBar, SceneMap, Label } from 'react-native-tab-view';
 import FlightView from './FlightView'; 
-import HotelView from './HotelView';
-import EventView from './EventView';
-import RestaurantView from './RestaurantView';
+
 
 export default class TabViewPage extends React.Component {
   state = {
     index: 0,
     routes: [
       { key: 'first', title: 'Flights' },
-      // { key: 'second', title: 'Hotels' },
-      // { key: 'third', title: 'Events' },
-      // { key: 'fourth', title: 'Food'},
     ],
   };
 
@@ -23,9 +18,7 @@ export default class TabViewPage extends React.Component {
   }
 
 TabFlightView = () => <FlightView params={this.params}/>;
-// HotelTabView = () => <HotelView params={this.params}/>;
-// EventTabView = () => <EventView params={this.params}/>;
-// FoodTabView = () => <RestaurantView params={this.params}/>;
+
  
   render() {
     return (
@@ -36,9 +29,6 @@ TabFlightView = () => <FlightView params={this.params}/>;
         navigationState={this.state}
         renderScene={SceneMap({
           first: this.TabFlightView,
-          // second: this.HotelTabView,
-          // third: this.EventTabView,
-          // fourth: this.FoodTabView,
         })}
         onIndexChange={index => this.setState({ index })}
         initialLayout={{ width: Dimensions.get('window').width,
